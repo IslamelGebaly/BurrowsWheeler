@@ -18,7 +18,7 @@ public class MoveToFront {
         char c;
         do {
             c = BinaryStdIn.readChar();
-            for (int i = 0; i < R; i++) {
+            for (char i = 0; i < R; i++) {
                 if (c == seq[i]) {
                     BinaryStdOut.write(i);
                     moveToFront(seq, i);
@@ -44,7 +44,7 @@ public class MoveToFront {
         char[] seq = initSequence();
         int c;
         while (!BinaryStdIn.isEmpty()) {
-            c = BinaryStdIn.readInt();
+            c = BinaryStdIn.readByte();
 
             BinaryStdOut.write(seq[c]);
             moveToFront(seq, c);
