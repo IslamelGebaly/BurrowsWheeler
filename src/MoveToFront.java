@@ -18,7 +18,7 @@ public class MoveToFront {
         char c;
         do {
             c = BinaryStdIn.readChar();
-            for (char i = 0; i < R; i++) {
+            for (int i = 0; i < R; i++) {
                 if (c == seq[i]) {
                     BinaryStdOut.write(i);
                     moveToFront(seq, i);
@@ -42,14 +42,15 @@ public class MoveToFront {
     // apply move-to-front decoding, reading from standard input and writing to standard output
     public static void decode() {
         char[] seq = initSequence();
-        char c;
+        int c;
         while (!BinaryStdIn.isEmpty()) {
-            c = BinaryStdIn.readChar();
-            
-            BinaryStdOut.write(seq[c]);
-            moveToFront(seq, seq[c]);
-        }
+            c = BinaryStdIn.readInt();
 
+            BinaryStdOut.write(seq[c]);
+            moveToFront(seq, c);
+        }
+        BinaryStdIn.close();
+        BinaryStdOut.close();
     }
 
     // if args[0] is "-", apply move-to-front encoding
