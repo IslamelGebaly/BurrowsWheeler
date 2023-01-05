@@ -12,18 +12,16 @@ public class CircularSuffixArray {
         }
 
         public int compareTo(CircularSuffix that) {
-            int n = 0;
-            for (int i = this.pointer, j = that.pointer; ; i++, j++) {
-                if (n == s.length())
-                    return 0;
-                i = i % s.length();
-                j = j % s.length();
+            int i = this.pointer, j = that.pointer;
+            for (int n = 0; n < s.length(); n++) {
+                i = i + 1 % s.length();
+                j = j + 1 % s.length();
                 if (this.s.charAt(i) > that.s.charAt(j))
                     return 1;
                 if (this.s.charAt(i) < that.s.charAt(j))
                     return -1;
-                n++;
             }
+            return 0;
         }
     }
 
