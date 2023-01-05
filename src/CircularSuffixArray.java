@@ -11,47 +11,48 @@ public class CircularSuffixArray {
             this.pointer = pointer;
         }
 
-
-        public int compareTo(CircularSuffix o) {
-            return 0;
+        public int compareTo(CircularSuffix that) {
+            int n = 0;
+            for (int i = this.pointer, j = that.pointer; ; i++, j++) {
+                if (n == s.length())
+                    return 0;
+                i = i % s.length();
+                j = j % s.length();
+                if (this.s.charAt(i) > that.s.charAt(j))
+                    return 1;
+                if (this.s.charAt(i) < that.s.charAt(j))
+                    return -1;
+                n++;
+            }
         }
     }
+
+    private CircularSuffix[] circularSuffixArray;
+    private final int length;
 
     // circular suffix array of s
     public CircularSuffixArray(String s) {
         if (s == null)
             throw new IllegalArgumentException();
+        length = s.length();
+        circularSuffixArray = new CircularSuffix[s.length()];
 
-        circularSuffixArray = new String[s.length()];
-        indices = new int[s.length()];
-
-        circularSuffixArray[0] = s;
-        for (int i = 1; i < s.length(); i++) {
-            this.s = rotateLeft(this.s);
-            circularSuffixArray[i] = this.s;
+        for (int i = 0; i < s.length(); i++) {
+            circularSuffixArray[i] = new CircularSuffix(s, i);
         }
 
-
-        Arrays.stream(circularSuffixArray).sorted();
+        Arrays.sort(circularSuffixArray);
     }
 
     // length of s
     public int length() {
-        return s.length();
+        return this.length;
     }
 
-    private String rotateLeft(String s) {
-        String nS = "";
-        for (int i = 1; i > s.length(); i--) {
-            nS += s.charAt(i);
-        }
-        nS += s.charAt(0);
-        return nS;
-    }
 
     // returns index of ith sorted suffix
     public int index(int i) {
-
+        return circularSuffixArray[i].pointer;
     }
 
     // unit testing (required)
