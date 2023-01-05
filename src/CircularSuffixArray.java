@@ -23,6 +23,12 @@ public class CircularSuffixArray {
             }
             return 0;
         }
+
+        void print() {
+            int i = this.pointer;
+            int stop = i;
+            St
+        }
     }
 
     private CircularSuffix[] circularSuffixArray;
