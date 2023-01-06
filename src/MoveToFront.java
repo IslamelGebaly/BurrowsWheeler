@@ -25,10 +25,8 @@ public class MoveToFront {
                     break;
                 }
             }
-        } while (c != '!');
-        BinaryStdIn.close();
+        } while (!BinaryStdIn.isEmpty());
         BinaryStdOut.close();
-
     }
 
     private static void moveToFront(char[] arr, int a) {
@@ -49,7 +47,6 @@ public class MoveToFront {
             BinaryStdOut.write(seq[c]);
             moveToFront(seq, c);
         }
-        BinaryStdIn.close();
         BinaryStdOut.close();
     }
 
