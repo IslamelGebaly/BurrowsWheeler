@@ -23,8 +23,8 @@ public class CircularSuffixArray {
                     return 1;
                 if (this.s.charAt(i) < that.s.charAt(j))
                     return -1;
-                i = (i + 1) % s.length();
-                j = (j + 1) % s.length();
+                i = i + 1 % s.length();
+                j = j + 1 % s.length();
             }
             return 0;
         }
